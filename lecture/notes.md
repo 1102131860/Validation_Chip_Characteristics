@@ -262,11 +262,310 @@ So if only $V_{DD} \downarrow$, it hard to tell crosstalk could be better or wor
 
     - **Shielding**: add a protect VSS wire between two long / high frequency wires
 
-- **Use Schmitt Triggered inputs (hystersis) to suppress crosstalk**
+- **Use Schmitt Triggered inputs (hysteresis) to suppress crosstalk**
 
-    - It has two thresholds ($V_{th+}, V_{th-}$)
+    - It has two thresholds ($V_{th+}, V_{th-}$) for rising and falling edge.
 
-    - Minor noise will not repeatly trigger
+    - Avoid the errors when we have noise input signals, especially when generating square waveform
+
+![Basic Schematics of Schmitt Trigger](./images/image_23.png)
 
 ![DC Curve of Schmitt Trigger](./images/image_22.png)
+
+# Power Delivery
+
+## Margins in Design
+
+### Clock Jitter
+
+- Cycle to cycle jitter
+
+    - 1st cycle period: 1ns; 2nd cycle period: 1.02ns; 3rd cycle period: 0.98ns 
+
+- impacting factors: PLL + clock tree
+
+    - PLL factors: VCO noise, Power noise, reference jitter
+
+    - Clock tree: buffer noise, supply noise, crosstalk, routing variation
+
+![Clock Jitter](./images/image_24.png)
+
+### Coupling Noise
+
+- Capacitive coupling between nets
+
+    - especially for long wires and short spacing
+
+- worset scenario: victim & aggressor are both switching
+
+    - same direction, delay decreases
+
+    - opposite direction, delay increases
+
+![Coupling noise](./images/image_25.png)
+
+### Temperature
+
+- Transistors
+
+    - $I_{sat} = \mu C_{ox}\frac{W}{2L}(V_{gs} - V_{th})^2$
+
+    - Temperature (T) $\uparrow$ $\rightarrow$ current mobility ($\mu$) $\downarrow$, voltage threshold ($V_{th}$) $\downarrow$
+
+    - In modern technique node, **Low Temperature will lead slower transistor**
+
+    - -40°C could be the worst case
+
+- Interconnects
+
+    - $R(T) = R_0(1 + \alpha T)$
+
+    - Temperature (T) $\uparrow$ $\rightarrow$ $R_{wire} \uparrow$ $\rightarrow$ RC delay $\uparrow$
+
+    - 125 °C could be the worst case
+
+![Temperature Impacts](./images/image_26.png)
+
+### Voltage
+
+- VRM (Voltage Regulator Module) offset
+
+    - PMIC could have DC offset, e.g., $1.0V \rightarrow 0.98V$
+
+- Regulator Noise and Response
+
+    - CPU switching $\rightarrow$ Current changes suddenly $\rightarrow$ Regulator responses not immediately $\rightarrow$ VDD variates
+
+- IR drop
+
+    - If the current is large in some area, $V = I \times R$, voltage drops
+
+- Inductance Drop
+
+    - $V = L\frac{di}{dt}$
+
+    - when multiple transistors switching $\rightarrow$ $\frac{di}{dt} \uparrow \rightarrow$ voltage drop $\uparrow$ 
+
+![Voltage droops](./images/image_27.png)
+
+### Process
+
+- global corners
+
+    - the entire wafer is fast or slow
+
+    - FF: fast transistor, TT: typical, SS: slow transistor
+
+- local mismatch
+
+    - The different area of one single chip could be different
+
+    - Clock skew, timing variation
+
+- device + wire
+
+    - transistor
+
+    - metal width, metal thickness, via resistance
+
+![Process Corners](./images/image_28.png)
+
+### Safety Margin
+
+- human nature
+
+- 2nd / 3rd order effects
+
+- "unkown unkowns"
+
+![Safety Margin](./images/image_29.png)
+
+![Final Margin of CLK](./images/image_30.png)
+
+## Design Margin Taxonomy
+
+Here are some noise factors we need to reserve margins for when we are designning the system
+
+![Design Margin](./images/image_31.png)
+
+- Usually, in terms of temporal rate of change, **dynamic noise is harder to handle**; in terms of spatial region, **local noise is harder to handle**
+
+## Energy-Efficient Design: Traditional Approaches
+
+### Industry: Other approaches prioritized till recently
+
+- Continued sacling
+
+    - Dennard scaling
+
+    - Smaller technology node, smaller capacitor, samller supply voltage
+
+- Clock gating
+
+    - reduce flipping activity factor $s$ to reduce dynamic power
+
+- Power gating
+
+    - reduce leakage current and static power consumption
+
+- DVFS (Dynamic Voltage and Frequency Scaling)
+
+    - Dynamically control voltage and frequency
+
+    - e.g., when CPU is idle, let voltage drops from 1.2V to 0.9V, frequency drops from 3GHz to 1.8GHz
+
+- Multi-Vth
+
+    - critical path, low Vth
+
+    - non-critical path, high Vth
+
+### Academia, focus on more exotic approaches
+
+- Adiabatic logic / Charge-recycling techniques
+
+- Super-pipeling (voltage-scaling)
+
+    - Decrease logic path/delay and increase clock frequency, as a result, reduce voltage to achieve same performance
+
+- Low-power logic topologies
+
+    - Pseudo-NMOS logic
+
+    ![Pseudo-NMOS example](./images/image_32.png)
+
+    ![W/Lp ratio of Pseudo-NMOS](./images/image_33.png)
+
+    - Pass-transistor
+
+    ![Pass Transistor Transient Curve](./images/image_34.png)
+
+    ![Pass Transistor AND gate](./images/image_35.png)
+
+    - Transmission-gate
+
+    ![Transmission Gate](./images/image_36.png)
+
+    - Dynamic logic
+
+    ![Dynamic Gate](./images/image_37.png)
+
+    ![Dynamic Gate with Charge Leakage Solution](./images/image_38.png)
+
+    - Domino logic
+
+    ![Design with Domino Logic](./images/image_39.png)
+
+## Voltage Margins: Challenge Perceptions
+
+### Industry
+
+- Traditionally recognized importance but until recently, not addressed as a design problem
+
+- Mitigated using **binning** and **test**
+
+    - good chip $\rightarrow$ low voltage and high frequency
+
+    - bad chip $\rightarrow$ high voltage and low frequency
+
+    - If timing is unstable, increase voltage and decrease frequency
+
+    - **Remediate through operating conditions rather than fixing from design**
+
+### Academia
+
+- Largely unheralded
+
+- Not seen as highly impactful effort in low-power design
+
+### Reality
+
+- Dominant source of inefficiency
+
+- Voltage Margin
+
+    - PVT variation
+
+    - IR drop
+
+    - Supply noise
+
+    - Process variation
+
+    - Temperature
+
+- Solutions (particularly supply noise) span variety of areas
+
+    - PDN design
+
+        - Power Grid
+
+        - decoupling capacitors
+
+        - IR drop reduction
+    
+    - Voltage Regulation
+
+        - VRM (Voltage Regulator Module)
+
+        - on-chip regulator
+
+        - LDO (Low-Dropout)
+    
+    - Clocking
+
+        - adaptive clocking
+
+        - dynamic timing margin
+    
+    - Micro-architecture
+
+        - Error Recovery
+
+            - e.g., SRAM/DRAM soft error use (Error Correcting Code(ECC)) to correctify
+        
+        - Razor Flip-flop
+
+            - detect timing error (cache side effect in exception handle)
+
+## PDN and Supply/Power Noise in Modern SoCs
+
+### High Performance Design
+
+When $P_{supply}$ keeps unchanged, to improve the performance ($delay \propto \frac{V_{DD}}{(V_{DD} - V_{th})^{\alpha}}$)
+
+- $V_{DD} \rightarrow \alpha V_{DD}$ 
+
+- $I_{DD} \rightarrow \frac{I_{DD}}{\alpha}$
+
+- $Z_{targ} \rightarrow \frac{\alpha V_{DD}}{\frac{I_{DD}}{\alpha}} = \alpha^2 Z_{targ}$
+
+To keeps $Z_{targ}$ as small as possible, now **the PDN has to much stronger, allowing smaller impedence than before**.
+
+- e.g. Allow 50 $m \Omega$ in PDN, for high performance design, now only allow 10 $m \Omega$
+
+### Low Power Design
+
+For Low Power Design, we usually want to reduce leakage current
+
+- $V_{th} \uparrow$ and $V_{DD} \downarrow$
+
+- delay sensitivity to supply noise $\uparrow$
+
+- voltage-domain count $\uparrow$
+
+    - e.g., CPU core 0.8V, GPU 0.9V, SRAM 0.7V, IO 1.2V
+
+- PDN becomes much complex, and noise coupling increases
+
+**Supply noise significantly impacts performance**
+
+In summary, Supply/Power Distribution Network (PDN), and Supply Noise (SN) become critical in Modern SoCs
+
+## PDN Delivery Network
+
+## Decap Parasitics
+
+## Supply Noise
+
 

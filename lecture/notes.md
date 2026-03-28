@@ -1,18 +1,16 @@
 # Analyzing the DC Transfer Function
 
-- Assume $I_{dsat,n} = I_{dsat,p}$
-
-- $V_{th,n}$ = $V_{th,p}$ = 200mV
+- Assume $I_{ds,sat,n} = I_{ds,sat,p}$; $V_{th,n}$ = $V_{th,p}$ = 200mV
 
 - Linear region $(V_{gs} > V_{th}; V_{ds} < (V_{gs} - V_{th}))$:
 
-    - $I_{ds} = \mu C_{ox} \frac{W}{2L}[2(V_{gs} - V_{th})V_{ds} - V_{ds}^2]$
+$$I_{ds,linear} = \mu C_{ox} \frac{W}{2L}[2(V_{gs} - V_{th})V_{ds} - V_{ds}^2]$$
 
 - Saturation region ($V_{ds}$ $\ge$ ($V_{gs} - V_{th}$)):
 
-    - $I_{ds} = \mu C_{ox} \frac{W}{2L}[(V_{gs} - V_{th})^2]$
+$$I_{ds,sat} = \mu C_{ox} \frac{W}{2L}(V_{gs} - V_{th})^2$$
 
-- $C_{ox} = \epsilon_o\epsilon_{ox}/t_{ox}$
+- $C_{ox} = \frac{\epsilon_o\epsilon_{ox}}{t_{ox}}$
 
 ![Baisc Invertor's VTC](./images/image_4.png)
 

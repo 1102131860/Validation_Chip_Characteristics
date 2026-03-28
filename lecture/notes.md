@@ -8,7 +8,7 @@
 
     - $I_{ds} = \mu C_{ox} \frac{W}{2L}[2(V_{gs} - V_{th})V_{ds} - V_{ds}^2]$
 
-- Saturation region ($V_{ds} < (V_{gs} - V_{th}$):
+- Saturation region ($V_{ds} \ge (V_{gs} - V_{th})$):
 
     - $I_{ds} = \mu C_{ox} \frac{W}{2L}[(V_{gs} - V_{th})^2]$
 
@@ -38,7 +38,7 @@
 
 ## Further Discussions:
 
-### 1. If both Vthp and Vthn increase to 0.8V, how does the curve look like?
+### 1. If both Vthp and Vthn increase to 0.4V, how does the curve look like?
 
 ![Inreased Vthp and Vthn to same value](./images/image_6.png)
 
@@ -66,13 +66,13 @@ In short, **Stronger PFET** => **Difficult high-to-low transition** => **Higher 
 
 - Proper choice of $\beta_{n}/\beta_{p}$ is necessary to achieve a desired switching threshold (Vm)
 
-### 4. If VDD = 1V rather 2.5V (|Vthp| = |Vthn| = 0.4V), how does the curve look like?
+### 4. If VDD = 1V rather 2.5V (|Vthp| = |Vthn| = 0.2V), how does the curve look like?
 
 ![VDD has smaller sweep range](./images/image_10.png)
 
 - $gain = \frac{\delta V_{out}}{\delta V_{in}}$
 
-- **Noise margin decreases**!
+- **Noise margin decreases** (Noise Effect increases)!
 
 ![Effect of VDD on VTC](./images/image_11.png)
 
@@ -100,7 +100,7 @@ $$\frac{I_{D2}}{I_{D1}} = e^{\frac{q(V_{gs2} - V_{gs1})}{nKT}} = e^{\frac{q(\Del
 
 $$\Delta V_{gs} = \frac{nKT}{q}ln{\frac{I_{D2}}{I_{D1}}}$$
 
-$$S = \frac{nKT}{q}ln(10) = \frac{kT}{q} ln(10) (1 + \frac{C_{D}}{C_{ox}})$$
+$$S = \frac{nKT}{q}ln(10) = \frac{KT}{q} ln(10) (1 + \frac{C_{D}}{C_{ox}})$$
 
 Min $S = \frac{kT}{q}ln(10)$ ~60mV / decade (for n = 1) at room temp (T = 300K)
 
@@ -564,8 +564,499 @@ In summary, Supply/Power Distribution Network (PDN), and Supply Noise (SN) becom
 
 ## PDN Delivery Network
 
-## Decap Parasitics
+The target of design Power Delivery Networks (PDN) is **Flatten the PDN impedence profile and keep it below $Z_{target}$**, Not impedence matching.
 
-## Supply Noise
+Three domains:
 
+```
+VRM -> PCB -> Package -> Chip
+```
+
+![Power Delivery Network](./images/image_40.png)
+
+There are two main Droop components:
+
+- **DC IR Droop** (DC part - lead by IR drop: V = IR)
+
+    - Reduced by Additional metallization
+
+- **AC Ldit/dt Droop** (Dynamic part - lead by inductance and capacitance of RLC response)
+
+    - Voltage droop: $V = L\frac{di}{dt}$
+
+    - Resonant happens because: **Package Inductance $L_{pkg}$** and **On-die decap $C_{die}$**
+
+    - **On-die decap insertion**
+    
+        - $C_{die} \uparrow$, providing transient current, working like a 'local battery'
+
+    - Reduce $L_{pkg}$
+
+        - shorter path, flip-chip, more bumps
+
+AC Droop is very dangerous:
+
+- lead to undershoot / overshoot
+
+- easily to lead to timing violation / crash
+
+### Decap Parasitics
+
+Why do we actively insert Decaps into die, package, PCB?
+
+- Current varies very very quick, but power supply is far away from the source
+
+- In some scenarios, millions of gates switching simultaneously, and current increases from 1A -> 20A
+
+- If we don't have decaps, the long path which has large inductance L, will lead $V = L\frac{di}{dt}$
+
+- Voltage drops suddenly, and leads to timing violation / crash
+
+- Using decap which works as a small battery near loads
+
+    - In ns, VRM cannot responses to the suddenly increased current demand, and decap will discharge
+
+    - In us, VRM will gradually supply the current, and decap will charge as well
+
+Why do we have different decaps ($C_{die}$ on Chip, $C_{pkg}$ on package, $C_{PCB}$ on PCB) on different positions?
+
+- On-die decap is the capacitor which is most close to the loads, and has the fastest response, in GHz
+
+    - To solve high-frequency noise / fast $\frac{di}{dt}$
+
+- Package decap is the middle one that close to the loads
+
+    - To solve the middle-frequency noise (1 MHz to 100MHz)
+
+- PCB decap is the farest one that close to the loads, and also has the largest capacitance
+
+    - To solve low-frequency and large current variations (kHz to 1 MHz)
+
+However, **decap is not an idealy passive component**, So it will have **Equivalent Series Resistance (ESR)** and **Equivalent Series Inductance (ESL)**
+
+- A true impedence of decap is **$Z(\omega) = ESR + j\omega L + \frac{1}{j\omega C}$**
+
+- When frequency increases, $Z_L = j \omega L \uparrow$
+
+## Supply Impedence and Noise
+
+### Frequency Domain
+
+The object is to minmize (max[Z])
+
+![Supply Impedence -- Frequency Domain](./images/image_41.png)
+
+- In low frequency, capacitor dominates and leads impedance reduces
+
+- In high frequency, inductor dominates and leads impedance increases
+
+- Three key resonant points:
+
+    - $L_{VRM} C_{BLK}$
+
+    - $L_{PCB} C_{PKG}$
+
+    - $L_{PKG} C_{DIE}$
+
+- **Resonance (Valley)**
+
+    - in-series resonance
+
+    ![Resonance](./images/image_44.png)
+
+    - $Y_L + Y_C = 0$ -> $Z_L + Z_C = 0$
+
+    - $j\omega L + \frac{1}{j\omega C} = 0$
+
+    - $\omega = \frac{1}{\sqrt{LC}}$ or $f = \frac{1}{2\pi \sqrt{LC}}$
+
+- **Anti-resonance (Peak)**
+
+    - in-parallel resonance
+
+    ![Anti-Resonance](./images/image_45.png)
+
+    - $Y_{C1} + Y_{L, C2} = 0$ -> $Z_{C1} + Z_{L, C2} = 0$
+
+    - $\frac{1}{j\omega_{anti} C1} + (j\omega_{anti} L + \frac{1}{j\omega_{anti} C2}) = 0$
+
+    - $\omega_{anti} = \sqrt{\frac{C_1 + C_2}{LC_1C_2}}$
+
+    - **Key issue: C vs C cancel current** (In input source's perspective, cannot see the current, impedence infinity)
+
+![Z_{targ}](./images/image_42.png)
+
+![Frequency Response](./images/image_47.png)
+
+### Time Domain
+
+In the time domain, **anti-resonance sets the amplitude, resonance sets the frequency**
+
+- anti-resonance will amplify the variations at some frequency (larger droop)
+
+- system oscillates at the resonance frequency, lead to the rining at time domain
+
+![Supply Impedence -- Time Domain](./images/image_43.png)
+
+- 1st Order Resonance: usually leads by **package inductance** $V = \frac{di}{dt}$ and **chip on-die parasitic cap**. 
+
+- 2nd Order Resonance: usually leads by **package inductance** and **on-die decap**
+
+- 3rd Order Resonance: usually leads by **PCB inductance** and **package decap**
+
+![Supply Noise Stimulus and Response](./images/image_46.png)
+
+- The system is actually a step response of RLC system
+
+- 1st Droop is the earliest and most critical voltage drops
+
+- Faster Ramp -> larger first droop
+
+## Methods to mitigate droop:
+
+### High-density Decap
+
+**Deep Trench Capacitor (DTC)**
+
+- Leveraging: Vertical Structure $\rightarrow$ Extremely high area efficiency
+
+- Essence: Placing an ultra-large capacitor in very close proximity to the transistor
+
+![High-density Decap](./images/image_48.png)
+
+- Decoupling capacitors (Decaps) are implemented in the top metal layers (M8/M9)
+
+- VDD and VSS rails are interleaved
+
+- Via connections are densely packed
+
+- Forms a distributed decoupling capacitor network
+
+![MIM decap networks](./images/image_49.png)
+
+Such a design makes **1st droop slower, less significant**
+
+- $V = \frac{1}{C} \int_{}^{} i \,dt$
+
+But **2nd droop can be significant but easier to manage**
+
+**High-K Dielectrics**
+
+![High-K Dielectrics](./images/image_50.png)
+
+- multiple capacitors in serial / parallel
+
+- different voltages 
+
+- "Stack" capacitors vertically to increase density.
+
+- Pros: MIM cap 500 fF/μm²
+
+- Cons: Significant ESR, which could leads to larger IR drops
+
+### Mircoarchitecture - Instruction Throttling
+
+![Instruction Throttling](./images/image_51.png)
+
+**Instruction Throttling**
+
+- Graduatlly fill compute pipeline (e.g., after a cache miss)
+
+- Slow ramp-up -> slow current build-up ($\frac{di}{dt}$)
+
+- Strongly disminishes 1st droop
+
+- Minor performance impact
+
+But there are also some limitations of Throttling
+
+![Limitations of Throttling](./images/image_52.png)
+
+- Throttling for 2nd droop requires very slow ramp-up
+
+- Significant performance loss. May be ill-suited to some applications
+
+### Even more worse in pulse response rather than step response
+
+![Step loads vs Pulse Response](./images/image_53.png)
+
+- Step load does not cause worst case droop
+
+- Pulsed load can result in larger margin requirement
+
+    - Especially if 1st droop dominates
+
+![Step vs. Pulse](./images/image_54.png)
+
+**Persistent Pulsing**
+
+Cyclic loads (Persistent pulses) induce **package resonance**, resulting in severe voltage fluctuations.
+
+![Persistent Pulsing](./images/image_55.png)
+
+- When pulse frequency approaches the resonant frequency of PDN, energy accumulation and large oscillation
+
+- High reliability and robustness impact
+
+So here is a whole strategy to handle the supply noise
+
+|Droop                | Solutions                             |
+|---------------------|---------------------------------------|
+|1st (high frequency) | on-die decap + instruction throttling |
+|2nd (Media frequency)| package decap                         |
+|3rd (low frequency)  | PCB + VRM                             |
+
+## Integrated Voltage Regulation Module (VRM)
+
+### Off-chip Voltage Regulation Module
+
+![Off-chip VRM](./images/image_56.png)
+
+- The energy-efficiency demand requires **spatio-temperal $V_{DD}$ scaling** (DVFS)
+
+![IVR - Improved Spatio-Temporal Resolution](./images/image_58.png)
+
+- Off-chip regulators overwhelming in use today have several issues below:
+
+    - Area-cost
+
+    - PDN degradation (per-domain)
+
+    - Slow transient response (Control far away from load)
+
+### Integrated Volatge Reguation Moudle
+
+![IVR](./images/image_57.png)
+
+- **Buck**
+
+- **Low-Dropout Regulators (LDO)**
+
+- **Switched-Capacitor (SC)**
+
+- Advantages in resolution, speed, pin-count, board-area
+
+### Integrated Voltage Regulation (Buck)
+
+![Integrated Voltage Regulation (Buck)](./images/image_59.png)
+
+|Pros                                          | Cons                                  |
+|----------------------------------------------|---------------------------------------|
+|Enhanced DVFS (spatio-temporal) ($ns$~$\mu s$)| 2-stage Converter for Li-cell devices |
+|Board Size / Cost reduction                   | Lower Converter efficiency (switching loss, gate driving loss, conduction loss)|
+|Lower input Current draw ($P = VI$, HVDD, $I \downarrow$)| Line-side supply noise     |
+
+**Intel Haswell (FIVR)**
+
+![Intel Haswell](./images/image_60.png)
+
+- **2-stage regulator**
+
+    - PCB (Coarse grain)
+
+    - Package (Fine grain)
+
+    - faster response, support DVFS
+
+- **Inductors built on package layer**
+
+    - $V = L \frac{di}{dt}$, L can be smaller and current response is faster
+
+    - droop is smaller
+
+- **Decap offered by on-chip MIMCAP (Metal-Insulator-Metal capacitor)**
+
+    - smaller size, high frequency current response, samller ESR/ESL
+
+    - suppress high-frequency noise, supply transient current, stabilize VDD
+
+![16-phase high-frequency Buck Converter](./images/image_61.png)
+
+- 16-phase operation, 140 MHz switching frequency
+
+    - 16 Parallel Buck Converters, reduce L
+
+    - **Each phase is interleaved**, current sharing
+
+- **Phase-shedding** to optimize efficiency across load 
+
+    - Dynamically shut down some phases based on the load
+
+**Phase Shedding**
+
+![Phase Shedding](./images/image_62.png)
+
+- Processors feature large dynmaic current range
+
+- Dynamic phase-shedding to achieve optimal efficiency across load-range
+
+    - Light load (left): 2-phase has the highest efficiency, 16-phase has the smallest efficiency
+
+    - Heavy load (right): 16-phse has the highest efficiency, 2-phase has the samllest efficiency
+
+- Peak Efficiency ~ 90 %
+    
+- Reason: Two types of Loss, Switching Loss and Conduction Loss
+
+    - Swicthing Loss $\propto$ number of phases
+
+    - Conduction Loss $\propto$ $I^2$
+
+    - Light load: reduce phase (reduce Switching Loss)
+    
+    - Heavy Load: increase phase (current sharing, reducing current and conduction loss)
+
+**Inductor Integration**
+
+![Inductor Integration](./images/image_63.png)
+
+**Inductor windings distributed over individual voltage domain**
+
+- Improved granularity
+
+- Relief in bump current density
+
+- Winding orientation to exploit mutual inductance
+
+### Linear Regulators (Low Dropout, namely LDO)
+
+An LDO is a linear voltage regulator that "uses a transistor as a resistor" to control Vout via feedback, but it directly "burns off" the excess voltage.
+
+![LDO Schematic](./images/image_64.png)
+
+Here are four critical components:
+
+- Error Amplifier 
+
+    - Inputs: $V_{ref}$ and $V_{feedback}$
+
+    - Output $V_{amp}$ controls the gate of Pass Gate (PMOS)
+
+- Pass Transistor
+
+    - It works as a adjustable/variable resistance
+
+- Feedback (Positive Feedback through Resistance)
+
+    - $V_{feedback} = V_{out} \times \frac{R_{div,2}}{R_{div,1} + R_{div,2}}$
+
+- $C_{out}$
+
+    - stabilize
+
+    - suppress transient noise
+
+Final result: $V_{out} \approx V_{ref}$
+
+But the biggest issue is the **energy efficiency**
+
+The loss efficiency at PMOS comes from (s is the switching factor):
+
+$$I_{PMOS} = \frac{1}{2}s C V_{out} f$$
+
+$$Q_{PMOS} = \frac{1}{2}s C V_{out}$$
+
+$$E_{PMOS} = \frac{1}{2}s C V_{out} V_{in}$$
+
+$$\eta' = 1 - \frac{\frac{1}{2}sCV_{out}V_{in}}{\frac{1}{2}sCV_{in}^2}$$
+
+$$\eta' = \frac{V_{in} - V_{out}}{V_{in}} = \frac{V_{DO}}{V_{in}}$$
+
+The LDO efficiency is:
+
+$$\eta = \frac{V_{out}I_{load}}{V_{in}I_{load}}$$
+
+$$\eta = \frac{V_{out}}{V_{in}}$$
+
+Key parameter: 
+
+$$V_{DO} = V_{in} - V_{out}$$
+
+Try to make this difference as small as possible, to improve the efficiency
+
+Usage: Analog, PLL, RF
+
+| Pros                        | Cons                          |
+|-----------------------------|-------------------------------|
+| Fast Regulation (Response)  | Not so Efficient              |
+| Low Aread Overhead (No L, C)| Weak current driving strength |
+| Small Noise (clear power)   | Power / Thermal bottleneck    |
+
+**LDO stability**
+
+![LDO stability](./images/image_65.png)
+
+On-chip Implementations typically feature dominant error-amplifier output pole
+
+- Stability challenges at low current (High $R_{out}$) configurations
+
+- Require careful componsation techniques to maintain stability
+
+    - ESR zero compensation
+
+    - Internal dominant pole compensation
+
+    - Adaptive biasing (control gm)
+
+![Bode plot](./images/image_66.png)
+
+**$P_{amp}$: error amplifier's pole** (dominant pole)
+
+- Output at the gate of pass transistor
+
+- Usually, it's the low-frequency dominate pole
+
+- It decides the basic stability of the whole system
+
+**$P_{load}$: load's pole** (sensitive pole)
+
+- $f_p = \frac{1}{2\pi R_{out}C_{out}}$
+
+- When $R_{out} \uparrow$, $I_{load} \downarrow$, low load current, $P_{load}$ moves to $P_{amp}$, Phase Margin decreases
+
+- When $R_{out} \downarrow$, $I_{load} \uparrow$, high load current, $P_{load}$ moves away from $P_{amp}$, Phase Margin increases
+
+**Digital LDOs**
+
+![Digital LDOs](./images/image_67.png)
+
+Digital LDO actually is a discrete-time feedback system
+
+- Comparator
+
+- Digital Controller
+
+    - multiple-bits control
+
+    - more smooth
+
+- Multiple pass transistors
+
+    - reduce step size
+
+    - interleaving
+
+    - improve response speed
+
+Challenges
+
+- Transient Droop
+
+    - The control is discrete and cannot adjust transiently
+
+- Limit cycle / ripple
+
+    - Comparator + quantization will oscillate
+
+- Delay problem
+
+    - comparator delay
+
+    - digital logic latency
+
+Recently receiving a lot of attention for SoC applications
+
+- Consistent with largely digital workflow
+
+- Potentially easy to port across designs and process tech.
 

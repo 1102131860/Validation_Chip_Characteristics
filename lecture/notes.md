@@ -8,7 +8,7 @@
 
     - $I_{ds} = \mu C_{ox} \frac{W}{2L}[2(V_{gs} - V_{th})V_{ds} - V_{ds}^2]$
 
-- Saturation region ($V_{ds} \ge (V_{gs} - V_{th})$):
+- Saturation region ($V_{ds}$ $\ge$ ($V_{gs} - V_{th}$)):
 
     - $I_{ds} = \mu C_{ox} \frac{W}{2L}[(V_{gs} - V_{th})^2]$
 

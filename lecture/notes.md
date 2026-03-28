@@ -840,7 +840,7 @@ So here is a whole strategy to handle the supply noise
 
 |Pros                                          | Cons                                  |
 |----------------------------------------------|---------------------------------------|
-|Enhanced DVFS (spatio-temporal) ($ns$~$\mu$ s)| 2-stage Converter for Li-cell devices |
+|Enhanced DVFS (spatio-temporal) ($\mu s$ to $ns$)| 2-stage Converter for Li-cell devices |
 |Board Size / Cost reduction                   | Lower Converter efficiency (switching loss, gate driving loss, conduction loss)|
 |Lower input Current draw ($P = VI$, HVDD, $I \downarrow$)| Line-side supply noise     |
 

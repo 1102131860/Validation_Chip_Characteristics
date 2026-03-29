@@ -1088,7 +1088,7 @@ $$R_{eq} = \frac{T}{C_1} = \frac{1}{C_1 f}$$
 
 For 2:1:
 
-$$Q_{charge} = Q_{discharge}$$
+$$Q_{before} = Q_{after}$$
 
 $$C_1 V_{in} = (C_1 + C_2) V_{out}$$
 

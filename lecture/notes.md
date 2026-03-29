@@ -834,15 +834,17 @@ So here is a whole strategy to handle the supply noise
 
 - Advantages in resolution, speed, pin-count, board-area
 
+--- 
+
 ### Integrated Voltage Regulation (Buck)
 
 ![Integrated Voltage Regulation (Buck)](./images/image_59.png)
 
-|Pros                                          | Cons                                  |
-|----------------------------------------------|---------------------------------------|
-|Enhanced DVFS (spatio-temporal) ($\mu s$ to $ns$)| 2-stage Converter for Li-cell devices |
-|Board Size / Cost reduction                   | Lower Converter efficiency (switching loss, gate driving loss, conduction loss)|
-|Lower input Current draw ($P = VI$, HVDD, $I \downarrow$)| Line-side supply noise     |
+|Pros                                                     | Cons                                                                           |
+|---------------------------------------------------------|--------------------------------------------------------------------------------|
+|Enhanced DVFS (spatio-temporal) ($\mu s$ to $ns$)        | 2-stage Converter for Li-cell devices                                          |
+|Board Size / Cost reduction                              | Lower Converter efficiency (switching loss, gate driving loss, conduction loss)|
+|Lower input Current drop ($P = VI$, HVDD, $I \downarrow$)| Line-side supply noise                                                         |
 
 **Intel Haswell (FIVR)**
 
@@ -915,6 +917,8 @@ So here is a whole strategy to handle the supply noise
 - Relief in bump current density
 
 - Winding orientation to exploit mutual inductance
+
+---
 
 ### Linear Regulators (Low Dropout, namely LDO)
 
@@ -1058,3 +1062,67 @@ Recently receiving a lot of attention for SoC applications
 
 - Potentially easy to port across designs and process tech.
 
+---
+
+### Switch Capacitor
+
+![Switch Capacitor](./images/image_68.png)
+
+$$Q_1 = C_1 V_1$$
+
+$$Q_2 = C_1 V_2$$
+
+$$\Delta Q = C_1 (V_1 - V_2) = C_1 \Delta V$$
+
+We can get the average value of current across this switched capacitor:
+
+$$I_{eq} = \frac{C_1 \Delta (V_1 - V_2)}{T} = C_1 \Delta V f$$
+
+The equivalent resistance will be:
+
+$$R_{eq} = \frac{T}{C_1} = \frac{1}{C_1 f}$$
+
+**Interleaving n:1 Switched Capacitors**
+
+![n:1 Switched Capacitors](./images/image_69.png)
+
+For 2:1:
+
+$$Q_{charge} = Q_{discharge}$$
+
+$$C_1 V_{in} = (C_1 + C_2) V_{out}$$
+
+$$V_{out} = \frac{C_1}{C_1 + C_2} V_{in}$$
+
+| Pros                                      |  Cons                                        |
+|-------------------------------------------|----------------------------------------------|
+|Total Integration                          | Large $R_{eq}$ (needs larger gate driver)    |
+|Small EMI (no inductor)                    | Fixed Conversion Ratio (2:1, 3:2, 3:1)       |
+|Transient Response (via interleaving)      | Output Voltage Ripple (needs multiple-phase) |
+
+### Comparison of Buck, LDO, SC in IVR
+
+|                       |  Buck (Inductor)          |   LDO (Linear)                                |     SC (Capacitor)     |
+|-----------------------|---------------------------|-----------------------------------------------|------------------------|
+| Essence               |  Inductive Energy Storage | Pass transistor dissipates the excess voltage | Charge redistribution  |
+| Efficiency            |  High                     |   Low                                         | Middle                 |
+| Integrability         |  Low                      |   High                                        | High                   |
+| Regulatory Granularity|  Continuous               |   Continuous                                  | Discrete               |
+| Output Resistance     |  Low                      |   Low                                         | High                   |
+| Ripple / Noise        |  High (Switching Noise)   |   Low                                         | Middle (Ripple Voltage)|
+| Response              |  Middle                   |   Fast                                        | Middle                 |
+| EMI                   |  High                     |   Low                                         | Low                    |
+
+Usage:
+
+- Core (CPU/GPU/AI Accelerator): Buck + SC + Digital LDO
+
+    - Needs Large Current + DVFS
+
+- Memory: Buck or SC
+
+    - The requirement for precision is not so high
+
+- Analog / RF: LDO
+
+    - Very Sensitive to Noise

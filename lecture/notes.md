@@ -24,9 +24,9 @@ $$I_{ds,sat} = \mu C_{ox} \frac{W}{2L}(V_{gs} - V_{th})^2$$
 
 - Governing equation: **Pullup current == Pulldown current**
 
-    - $I_{NEFT}(V_{gsn}, V_{dsn}, V_{thn}) = I_{PEFT}(V_{gsp}, V_{dsp}, V_{thp})$
+$I_{NEFT}(V_{gsn}, V_{dsn}, V_{thn}) = I_{PEFT}(V_{gsp}, V_{dsp}, V_{thp})$
 
-    - where $V_{gsn} = V_{in}$, $V_{dsn} = V_{out}$; $|V_{gsp}| = V_{DD} - V_{in}$, $|V_{dsp}| = V_{DD} - V_{out}$
+- where $V_{gsn} = V_{in}$, $V_{dsn} = V_{out}$; $|V_{gsp}| = V_{DD} - V_{in}$, $|V_{dsp}| = V_{DD} - V_{out}$
 
 - Both equation-based and graphical analysis is valuable
 
@@ -34,7 +34,7 @@ $$I_{ds,sat} = \mu C_{ox} \frac{W}{2L}(V_{gs} - V_{th})^2$$
 
 ![CMOS Inverter VTC](./images/image_5.png)
 
-## Further Discussions:
+## Further Discussions
 
 ### 1. If both Vthp and Vthn increase to 0.4V, how does the curve look like?
 
@@ -1082,6 +1082,28 @@ The equivalent resistance will be:
 
 $$R_{eq} = \frac{T}{C_1} = \frac{1}{C_1 f}$$
 
+**Basic Switched Capacitor**
+
+![3:1 Switched Capactior](./images/image_82.png)
+
+*Charging Phase*
+
+- The voltage of inverters is 0V, i.e., PMOS is on, NMOS is off
+
+- C1 and C2 are connected in **serial**
+
+- Based on KVL(distributed voltage principle)
+
+$$V_{out} = V_{in} \frac{C_1}{C_1 + C_2}$$
+
+*Discharging Phase*
+
+- The voltage of inverters is 1V, i.e., PMOS is off, NMOS is on
+
+- C1 and C2 are connected in **parallel**
+
+- Capacitors discharge and $V_{out}$ drops to 0V
+
 **Interleaving n:1 Switched Capacitors**
 
 ![n:1 Switched Capacitors](./images/image_69.png)
@@ -1126,3 +1148,221 @@ Usage:
 - Analog / RF: LDO
 
     - Very Sensitive to Noise
+
+# Clock Distribution
+
+## Clock Distribution Topologies
+
+![H-tree](./images/image_70.png)
+
+Unstructured tree
+
+- Tree topology, but physical placement is not well-structured to promote balance
+
+- Typically uses local interconnection to "grow" clock coverage across domain
+
+Advantages
+
+- Default topology for Auto-Place and Route (APR) tools
+
+- Amenable to ad-hoc clock buffer placement
+
+- Developed technology for automation
+
+Disadvantages
+
+- Susceptible to PVT variation
+
+    - Common point is potentially distant
+
+    - Power planning for buffers typically deficient
+
+- Difficult to get low post-silicon skew for **large blocks**
+
+**Best suited for block-level clock tree generation**
+
+### Intel Itaninum2: "Uncore" asymmetrical clock tree
+
+![Intel Itanium2](./images/image_74.png)
+
+- Different clock topologies for diferent area
+
+    - CPU / GPU Core: mesh / H-tree
+
+    - Uncore: unstructed tree
+
+- Each area has its local clock tree, in Cache (L3), Memory controller, Interconnect / NoC, IO
+
+## H-Trees, X-Trees ...
+
+Structured tree topologies
+
+- Use thick, upper metal to traverse longer distances. Thick metal $\rightarrow$ longer spans between clock drivers, lower insertion delay
+
+- Tighter control of global skew (compared to unstructured trees)
+
+- **Good choice for efficiency driving well-placed loads over a wide span**
+
+Note: Structured trees don't always look this clean
+
+![H-Trees and X-Trees topology](./images/image_71.png)
+
+### IBM CMOS S/390 Processor: H-Tree
+
+Real clock trees are "structured but distorted"
+
+- unregular placement, routing
+
+- buffer insersion
+
+- different metal layers
+
+![IBM CMOS H-tree](./images/image_72.png)
+
+## Binary Trees
+
+![Binary Trees](./images/image_75.png)
+
+- H-Trees can be intrusive (area, current draw)
+
+- Compact physical implement (Point -> Line)
+
+- Extension: Binary Trees with recombinant wires
+
+    - **Wire resistance in recombinant wires crucial - Hard to zero out skew with non-zero rise times**
+
+### Composition Binary Trees -> Global Clock Tree
+
+Combine binary trees to form global clock tree, instead of using H-tree or full mesh
+
+- Composition. Combine binary trees to form a balanced tree effect
+
+- Clock-point -> Clock-array (First Dimension) -> Clock-grid-of-points (Two Dimensions) (Discrete not continous)
+
+- Clock tree distribution in its own set of dedicated macros
+
+![Global Clock Tree](./images/image_78.png)
+
+## Spines and Serpentines
+
+![Spines and Serpentines](./images/image_76.png)
+
+Spines short output drivers together (reduce skew)
+
+- Higher level metal (low resistance, increase driving strength, using top metal)
+
+- Shorting bar resistance: Skew control vs. power (shorting, $CV^2$)
+
+- **Driver Beta ratio** $\beta = \frac{W_{NMOS}}{W_{PMOS}}$, **clock slew rate** both affect **shorting cpacbility**
+
+    - diver matching is crucial
+
+## Clock Grid
+
+Clock Tree do a good job of efficiently driving well structured distant loads
+
+But clock loads are distributed, dense and often "lopsided"
+
+Use a clock tree (H/Binary) to drive a grid
+
+![Clock Grid](./images/image_77.png)
+
+- Distribute clock to grid drivers (H/Binary) tree
+
+Pros
+
+- **Drivers drive grid at multiple points**
+
+- **Excellent skew control**
+
+- **Robust to PVT variation**
+
+Cons
+
+- **High capacitive load**
+
+- **Unit/Block level gating becomes chanllenging**
+
+### Power 4 (IBM): The Clock grid 
+
+![The Clock grid](./images/image_73.png)
+
+Htree driving **a grid**
+
+- buffer level 1 ~ 4 -> sector buffers -> tuned sector trees -> grid
+
+- Bottom: A H-tree (layered buffer)
+
+- Top: Global Clock Grid/Mesh (Two Dimensional Mesh)
+
+267 $mm^2$ die area
+
+Clock skew = 18ps
+
+**Good for large die area but needs tiny skew**
+
+Pros:
+
+- **multi-path**
+
+- **current sharing**
+
+- **delay averaging**
+
+Cons:
+
+- **Large Grid -> Large/More Capacitors -> More Power Consumption**
+
+- **Routing complexity (signal routing, power routing)**
+
+## Clock compensation and De-skew
+
+Post-silicon tuning of global clock distribution
+
+Use **"de-skew" blocks (distributed DLL) to compare global clock to a reference**
+
+- Lower capacitance than clock grid
+
+- Robustness to PVT
+
+![DSK and CDC](./images/image_79.png)
+
+|  DLL component     |   De-skew Terminology           |
+|--------------------|---------------------------------|
+| Reference Clock    | PLL output/refernce clock       |
+| Delay line         | DSK (de-skew buffer)            |
+| Phase detector     | clock comparsio                 |
+| Loop controller    | CDC (central deskew controller) |
+
+![Global/Regional/Local](./images/image_80.png)
+
+Pros
+
+- **Recovers global clock skew**
+
+- **smaller capacitor than clock grid -> lower power consumption**
+
+- **less sensitive to PVT variation**
+
+## Clock Drivers
+
+![Clock Drivers](./images/image_81.png)
+
+Diver palette designed to drive variety of clock loads (delay-matched!)
+
+Clock grid drivers consume nearly 40-60% of the load they drive!
+
+- Power, Signal EM is a major consideration
+
+- Min-Width/Delay-matching $\rightarrow$ Smaller drivers tend to be less efficient
+
+- Design decisions based on what will result in the lowers **total power**
+
+Efficient driver staging and design is crucial
+
+- Maximal pruning for the sub-trees
+
+- **Design for power (slew/reliability/noise) not for min-delay** 
+
+
+

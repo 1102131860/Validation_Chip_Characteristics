@@ -1082,7 +1082,7 @@ The equivalent resistance will be:
 
 $$R_{eq} = \frac{T}{C_1} = \frac{1}{C_1 f}$$
 
-**Basic Switched Capacitor**
+**Basic 2:1 Switched Capacitor**
 
 ![3:1 Switched Capactior](./images/image_82.png)
 
@@ -1092,17 +1092,19 @@ $$R_{eq} = \frac{T}{C_1} = \frac{1}{C_1 f}$$
 
 - C1 and C2 are connected in **serial**
 
-- Based on KVL(distributed voltage principle)
-
-$$V_{out} = V_{in} \frac{C_1}{C_1 + C_2}$$
-
 *Discharging Phase*
 
 - The voltage of inverters is 1V, i.e., PMOS is off, NMOS is on
 
 - C1 and C2 are connected in **parallel**
 
-- Capacitors discharge and $V_{out}$ drops to 0V
+Based on the charge sharing theory (before charging == after charging)
+
+$$V_{out} C_1 + (V_{in} - V_{out}) C_2 = V_{out} (C_1 + C_2)$$
+
+$$V_{out} = \frac{1}{2}V_{in}$$
+
+Here, when $V_{in} = 2V$, we can get $V_{out} = 1V$
 
 **Interleaving n:1 Switched Capacitors**
 

@@ -1076,7 +1076,7 @@ $$\Delta Q = C_1 (V_1 - V_2) = C_1 \Delta V$$
 
 We can get the average value of current across this switched capacitor:
 
-$$I_{eq} = \frac{C_1 \Delta (V_1 - V_2)}{T} = C_1 \Delta V f$$
+$$I_{eq} = \frac{C_1 (V_1 - V_2)}{T} = C_1 \Delta V f$$
 
 The equivalent resistance will be:
 

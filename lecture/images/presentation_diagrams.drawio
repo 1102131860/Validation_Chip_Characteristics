@@ -4,41 +4,68 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="230" width="460" x="100" y="400" as="geometry" />
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="701" width="430" x="800" y="139" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="190" width="460" x="100" y="170" as="geometry" />
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+          <mxGeometry height="701" width="755" x="5" y="139" as="geometry" />
         </mxCell>
-        <mxCell id="sospXEWxh07_gV2HcNLD-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Weight Loading&lt;/font&gt;" vertex="1">
-          <mxGeometry height="70" width="210" x="280" y="190" as="geometry" />
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+          <mxGeometry height="130" width="670" x="55" y="690" as="geometry" />
         </mxCell>
-        <mxCell id="sospXEWxh07_gV2HcNLD-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Matrix Multiplication&lt;/font&gt;" vertex="1">
-          <mxGeometry height="70" width="210" x="280" y="280" as="geometry" />
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+          <mxGeometry height="270" width="670" x="55" y="389" as="geometry" />
         </mxCell>
-        <mxCell id="sospXEWxh07_gV2HcNLD-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Matrix Multiplication (4x4 @ 4x4)&lt;/font&gt;" vertex="1">
-          <mxGeometry height="80" width="210" x="280" y="417" as="geometry" />
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+          <mxGeometry height="200" width="460" x="164" y="159" as="geometry" />
         </mxCell>
-        <mxCell id="sospXEWxh07_gV2HcNLD-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Matrix Multiplication with Saturation&lt;br&gt;(4x4 @ 4x4)&lt;/font&gt;" vertex="1">
-          <mxGeometry height="90" width="210" x="280" y="520" as="geometry" />
+        <mxCell id="sospXEWxh07_gV2HcNLD-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Weight Loading&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="210" x="344" y="179" as="geometry" />
         </mxCell>
-        <mxCell id="sospXEWxh07_gV2HcNLD-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Memory Mode:&lt;br&gt;Matrix Multiplication with Negative Matrices&lt;br&gt;(6x4 @ 4x4)&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="210" x="200" y="687" as="geometry" />
+        <mxCell id="sospXEWxh07_gV2HcNLD-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Matrix Multiplication&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="210" x="344" y="269" as="geometry" />
         </mxCell>
-        <mxCell id="-LYltNmdYxxHTX9rq09f-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Memory Mode:&lt;br&gt;Matrix Multiplication with output stationary&lt;br&gt;(4x4 @ 4x4)&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="210" x="200" y="837" as="geometry" />
+        <mxCell id="sospXEWxh07_gV2HcNLD-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Matrix Multiplication (4x4 @ 4x4)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="210" x="221" y="406" as="geometry" />
         </mxCell>
-        <mxCell id="-LYltNmdYxxHTX9rq09f-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;BiST Mode: No Bypass (LSFR, DUT, and SA enabled)&lt;/span&gt;" vertex="1">
-          <mxGeometry height="90" width="210" x="200" y="987" as="geometry" />
+        <mxCell id="sospXEWxh07_gV2HcNLD-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Matrix Multiplication with Saturation&lt;br&gt;(4x4 @ 4x4)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="210" x="221" y="509" as="geometry" />
         </mxCell>
-        <mxCell id="-LYltNmdYxxHTX9rq09f-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;Power off all DC Power Supply&lt;/span&gt;" vertex="1">
-          <mxGeometry height="80" width="190" x="600" y="730" as="geometry" />
+        <mxCell id="sospXEWxh07_gV2HcNLD-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Matrix Multiplication with Negative Matrices&lt;br&gt;(6x4 @ 4x4)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="455" y="406" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Externa Model&lt;/font&gt;" vertex="1">
-          <mxGeometry height="30" width="140" x="130" y="250" as="geometry" />
+        <mxCell id="-LYltNmdYxxHTX9rq09f-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Matrix Multiplication with output stationary&lt;br&gt;(4x4 @ 4x4)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="110" width="210" x="455" y="529" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Memory Mode" vertex="1">
-          <mxGeometry height="43" width="90" x="150" y="497" as="geometry" />
+        <mxCell id="-LYltNmdYxxHTX9rq09f-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;span&gt;No Bypass (LSFR, DUT, and SA enabled)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="90" width="210" x="305" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="-LYltNmdYxxHTX9rq09f-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;span&gt;Power off all DC Power Supply&lt;/span&gt;" vertex="1">
+          <mxGeometry height="80" width="205" x="955" y="269" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;font&gt;Externa Model&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="140" x="194" y="239" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;font&gt;Memory Mode&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="140" x="71" y="489" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;font&gt;BiST Mode&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="120" x="81" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;font&gt;Run Functional Test Scripts On MCU&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="145" x="11" y="224" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Chip Bring-Up&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="795" y="194" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Insert / Change a chip&lt;/font&gt;" vertex="1">
+          <mxGeometry height="71" width="210" x="955" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Setup Power Supply&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="210" x="955" y="174" as="geometry" />
+        </mxCell>
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect probe to PCB&lt;/font&gt;" vertex="1">
+          <mxGeometry height="61" width="205" x="955" y="389" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

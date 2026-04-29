@@ -4,19 +4,19 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="" vertex="1">
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
           <mxGeometry height="701" width="430" x="800" y="139" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
           <mxGeometry height="701" width="755" x="5" y="139" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
           <mxGeometry height="130" width="661" x="64" y="690" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
           <mxGeometry height="270" width="661" x="64" y="389" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="" vertex="1">
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;fillColor=#e1d5e7;strokeColor=#9673a6;" value="" vertex="1">
           <mxGeometry height="200" width="460" x="164" y="159" as="geometry" />
         </mxCell>
         <mxCell id="sospXEWxh07_gV2HcNLD-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;font&gt;Weight Loading&lt;/font&gt;" vertex="1">
@@ -50,7 +50,7 @@
           <mxGeometry height="70" width="140" x="71" y="489" as="geometry" />
         </mxCell>
         <mxCell id="u4sK_hv8aNIEFo1K-5Pd-10" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;font&gt;BiST Mode&lt;/font&gt;" vertex="1">
-          <mxGeometry height="50" width="120" x="81" y="730" as="geometry" />
+          <mxGeometry height="50" width="120" x="120" y="730" as="geometry" />
         </mxCell>
         <mxCell id="u4sK_hv8aNIEFo1K-5Pd-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=20;" value="&lt;font&gt;Run Functional Test Scripts On MCU&lt;/font&gt;" vertex="1">
           <mxGeometry height="60" width="145" x="11" y="224" as="geometry" />

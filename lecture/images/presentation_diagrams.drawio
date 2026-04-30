@@ -308,7 +308,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Ij8eeH6Br5OIj-sK04hk" name="voltage_frequency_framework">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1288" dy="659" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -332,9 +332,6 @@
         </mxCell>
         <mxCell id="wsH1rBW07akFgENrd4sb-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Update VDD_Tile&lt;/font&gt;" vertex="1">
           <mxGeometry height="39" width="220" x="360" y="570.25" as="geometry" />
-        </mxCell>
-        <mxCell id="wsH1rBW07akFgENrd4sb-8" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Run this configuration 5 times?&lt;/font&gt;" vertex="1">
-          <mxGeometry height="100" width="180" x="520" y="940.5" as="geometry" />
         </mxCell>
         <mxCell id="wsH1rBW07akFgENrd4sb-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Record pass / fail, frequency&lt;/font&gt;" vertex="1">
           <mxGeometry height="44.75" width="265" x="628.5" y="848.75" as="geometry" />
@@ -372,21 +369,9 @@
             <mxPoint x="460" y="909.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="wsH1rBW07akFgENrd4sb-21" edge="1" parent="1" source="wsH1rBW07akFgENrd4sb-3" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="wsH1rBW07akFgENrd4sb-8" value="">
+        <mxCell id="wsH1rBW07akFgENrd4sb-23" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="wsH1rBW07akFgENrd4sb-3" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="470" y="969.5" as="sourcePoint" />
-            <mxPoint x="520" y="919.5" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="wsH1rBW07akFgENrd4sb-22" edge="1" parent="1" source="wsH1rBW07akFgENrd4sb-8" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="wsH1rBW07akFgENrd4sb-9" value="">
-          <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="760" y="989.5" as="sourcePoint" />
-            <mxPoint x="760.9999999999995" y="889.5" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="wsH1rBW07akFgENrd4sb-23" edge="1" parent="1" source="wsH1rBW07akFgENrd4sb-8" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="wsH1rBW07akFgENrd4sb-3" value="">
-          <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="560" y="939.5" as="sourcePoint" />
+            <mxPoint x="610" y="940.5" as="sourcePoint" />
             <mxPoint x="610" y="889.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -462,7 +447,7 @@
             <mxPoint x="1380" y="566.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="wsH1rBW07akFgENrd4sb-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to multimeter/oscilliscope via&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;USA-USB wire&lt;/span&gt;" vertex="1">
+        <mxCell id="wsH1rBW07akFgENrd4sb-41" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to multimeter/oscilloscope via&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;USA-USB wire&lt;/span&gt;" vertex="1">
           <mxGeometry height="77" width="230" x="1017.76" y="447.5" as="geometry" />
         </mxCell>
         <mxCell id="wsH1rBW07akFgENrd4sb-43" edge="1" parent="1" source="wsH1rBW07akFgENrd4sb-41" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="wsH1rBW07akFgENrd4sb-16" value="">
@@ -501,6 +486,9 @@
             <mxPoint x="900" y="649.5" as="sourcePoint" />
             <mxPoint x="950" y="599.5" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="1KirHqmabwJeU1jaB3ue-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;span style=&quot;font-size: 20px;&quot;&gt;Run this configuration 5 times?&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="235" x="497.5" y="963.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

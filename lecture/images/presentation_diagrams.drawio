@@ -128,8 +128,8 @@
         <mxCell id="BrWTOJsMYGg1uYlE6Rqr-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="" vertex="1">
           <mxGeometry height="229" width="300" x="15.75" y="66.5" as="geometry" />
         </mxCell>
-        <mxCell id="v97vcVgmbiJFKWHh-3nB-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Run BiST Funtional Test&lt;/font&gt;" vertex="1">
-          <mxGeometry height="38.25" width="220" x="-604" y="505.25" as="geometry" />
+        <mxCell id="v97vcVgmbiJFKWHh-3nB-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Run BiST Functional Test&lt;/font&gt;" vertex="1">
+          <mxGeometry height="38.25" width="236" x="-612" y="505.25" as="geometry" />
         </mxCell>
         <mxCell id="v97vcVgmbiJFKWHh-3nB-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Update RO_coarse and RO_fine&lt;br&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="51.5" width="220" x="-604" y="370.25" as="geometry" />

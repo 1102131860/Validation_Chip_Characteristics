@@ -146,8 +146,8 @@
         <mxCell id="v97vcVgmbiJFKWHh-3nB-8" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Run this configuration 5 times?&lt;/font&gt;" vertex="1">
           <mxGeometry height="100" width="180" x="-201" y="597" as="geometry" />
         </mxCell>
-        <mxCell id="v97vcVgmbiJFKWHh-3nB-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Record pass / fail counts&lt;/font&gt;" vertex="1">
-          <mxGeometry height="40.75" width="240" x="-80" y="505.25" as="geometry" />
+        <mxCell id="v97vcVgmbiJFKWHh-3nB-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Record pass / fail, frequency&lt;/font&gt;" vertex="1">
+          <mxGeometry height="56" width="240" x="-80" y="496.38" as="geometry" />
         </mxCell>
         <mxCell id="v97vcVgmbiJFKWHh-3nB-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Set PVDD_RO&lt;/font&gt;" vertex="1">
           <mxGeometry height="40" width="220" x="-361" y="141" as="geometry" />
@@ -159,19 +159,19 @@
           <mxGeometry height="42" width="130" x="343" y="679" as="geometry" />
         </mxCell>
         <mxCell id="Gd5hQ59z7SKtnslyQGk5-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Insert / Switch a chip&lt;/font&gt;" vertex="1">
-          <mxGeometry height="50" width="210" x="306.75" y="520" as="geometry" />
+          <mxGeometry height="50" width="210" x="306.75" y="540" as="geometry" />
         </mxCell>
         <mxCell id="Gd5hQ59z7SKtnslyQGk5-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to Power Supply&lt;/font&gt;" vertex="1">
-          <mxGeometry height="61" width="227.5" x="298" y="336" as="geometry" />
+          <mxGeometry height="61" width="227.5" x="298" y="346.5" as="geometry" />
         </mxCell>
         <mxCell id="Gd5hQ59z7SKtnslyQGk5-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Power on power supply&lt;/font&gt;" vertex="1">
-          <mxGeometry height="50" width="218.75" x="302.38" y="599" as="geometry" />
+          <mxGeometry height="50" width="218.75" x="302.37" y="620" as="geometry" />
         </mxCell>
         <mxCell id="Gd5hQ59z7SKtnslyQGk5-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to power supply via&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;USA-USB wire&lt;/span&gt;" vertex="1">
           <mxGeometry height="77" width="230" x="296.75" y="195.5" as="geometry" />
         </mxCell>
         <mxCell id="GWfnd4wbCUi-GLXqdDID-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;span&gt;Power off Power supply&lt;/span&gt;" vertex="1">
-          <mxGeometry height="61" width="218.75" x="302.38" y="430" as="geometry" />
+          <mxGeometry height="61" width="218.75" x="302.38" y="444.25" as="geometry" />
         </mxCell>
         <mxCell id="BrWTOJsMYGg1uYlE6Rqr-3" edge="1" parent="1" source="v97vcVgmbiJFKWHh-3nB-10" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="v97vcVgmbiJFKWHh-3nB-6" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
@@ -209,9 +209,9 @@
             <mxPoint x="-111" y="546" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="BrWTOJsMYGg1uYlE6Rqr-9" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="v97vcVgmbiJFKWHh-3nB-3" value="">
+        <mxCell id="BrWTOJsMYGg1uYlE6Rqr-9" edge="1" parent="1" source="v97vcVgmbiJFKWHh-3nB-9" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="v97vcVgmbiJFKWHh-3nB-3" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
-            <mxPoint x="39.999999999999545" y="505.25" as="sourcePoint" />
+            <mxPoint x="40" y="490" as="sourcePoint" />
             <mxPoint x="139" y="576" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -242,7 +242,7 @@
         <mxCell id="S5CFqDuzVjltZ-plBdAL-2" edge="1" parent="1" source="Gd5hQ59z7SKtnslyQGk5-10" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="v97vcVgmbiJFKWHh-3nB-10" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <Array as="points">
-              <mxPoint x="229" y="626" />
+              <mxPoint x="229" y="645" />
               <mxPoint x="229" y="161" />
             </Array>
             <mxPoint x="179" y="453" as="sourcePoint" />

@@ -59,7 +59,10 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="u4sK_hv8aNIEFo1K-5Pd-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Insert / Change a chip&lt;/font&gt;" vertex="1">
-          <mxGeometry height="71" width="210" x="955" y="528" as="geometry" />
+          <mxGeometry height="71" width="210" x="957.5" y="518.5" as="geometry" />
+        </mxCell>
+        <mxCell id="kMPJZPJU_ETUvULHIUaW-4" edge="1" parent="1" source="u4sK_hv8aNIEFo1K-5Pd-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="kMPJZPJU_ETUvULHIUaW-3" value="">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="u4sK_hv8aNIEFo1K-5Pd-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Setup Power Supply&lt;/font&gt;" vertex="1">
           <mxGeometry height="60" width="210" x="957.5" y="284" as="geometry" />
@@ -70,8 +73,8 @@
         <mxCell id="u4sK_hv8aNIEFo1K-5Pd-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to Power Supply&lt;/font&gt;" vertex="1">
           <mxGeometry height="54" width="232.5" x="946.25" y="180" as="geometry" />
         </mxCell>
-        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Power on DC power supplies&lt;/font&gt;" vertex="1">
-          <mxGeometry height="70" width="205" x="957.5" y="670" as="geometry" />
+        <mxCell id="u4sK_hv8aNIEFo1K-5Pd-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Power on power supply&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="210" x="957.5" y="670" as="geometry" />
         </mxCell>
         <mxCell id="u4sK_hv8aNIEFo1K-5Pd-26" edge="1" parent="1" source="u4sK_hv8aNIEFo1K-5Pd-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="u4sK_hv8aNIEFo1K-5Pd-5" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
@@ -85,8 +88,11 @@
             <mxPoint x="620" y="560" as="targetPoint" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="kMPJZPJU_ETUvULHIUaW-5" edge="1" parent="1" source="kMPJZPJU_ETUvULHIUaW-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="u4sK_hv8aNIEFo1K-5Pd-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="kMPJZPJU_ETUvULHIUaW-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;span&gt;Power off power supply&lt;/span&gt;" vertex="1">
-          <mxGeometry height="59" width="215" x="957.5" y="400" as="geometry" />
+          <mxGeometry height="59" width="215" x="955" y="400" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

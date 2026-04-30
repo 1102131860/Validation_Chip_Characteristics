@@ -126,7 +126,7 @@
           <mxGeometry height="640" width="580" x="-401" y="80" as="geometry" />
         </mxCell>
         <mxCell id="BrWTOJsMYGg1uYlE6Rqr-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="" vertex="1">
-          <mxGeometry height="209" width="300" x="260" y="80" as="geometry" />
+          <mxGeometry height="229" width="300" x="258.75" y="66.5" as="geometry" />
         </mxCell>
         <mxCell id="v97vcVgmbiJFKWHh-3nB-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Run BiST Funtional Test&lt;/font&gt;" vertex="1">
           <mxGeometry height="38.25" width="220" x="-361" y="505.25" as="geometry" />
@@ -234,7 +234,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="4CkFGsDrCA23_47-pS8t-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;MCU Bring-Up&lt;/font&gt;" vertex="1">
-          <mxGeometry height="40" width="149" x="560" y="84.25" as="geometry" />
+          <mxGeometry height="40" width="149" x="337.25" y="67" as="geometry" />
         </mxCell>
         <mxCell id="4CkFGsDrCA23_47-pS8t-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Shmoo Plot&lt;/font&gt;" vertex="1">
           <mxGeometry height="40.25" width="170" x="-191" y="84" as="geometry" />
@@ -290,6 +290,9 @@
             <mxPoint x="609" y="273" as="sourcePoint" />
             <mxPoint x="659" y="223" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="aSrc4lUXCqjfdE8C2HuY-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to multimeter/oscilliscope via&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;USA-USB wire&lt;/span&gt;" vertex="1">
+          <mxGeometry height="77" width="230" x="298" y="104" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

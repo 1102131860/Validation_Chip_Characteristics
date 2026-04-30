@@ -236,8 +236,8 @@
         <mxCell id="4CkFGsDrCA23_47-pS8t-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;MCU Bring-Up&lt;/font&gt;" vertex="1">
           <mxGeometry height="40" width="149" x="334.5" y="91.5" as="geometry" />
         </mxCell>
-        <mxCell id="4CkFGsDrCA23_47-pS8t-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;MCU Test Scripts&lt;/font&gt;" vertex="1">
-          <mxGeometry height="50.25" width="170" x="-191" y="80" as="geometry" />
+        <mxCell id="4CkFGsDrCA23_47-pS8t-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Shmoo Plot&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40.25" width="170" x="-191" y="80" as="geometry" />
         </mxCell>
         <mxCell id="S5CFqDuzVjltZ-plBdAL-2" edge="1" parent="1" source="Gd5hQ59z7SKtnslyQGk5-10" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="v97vcVgmbiJFKWHh-3nB-10" value="">
           <mxGeometry height="50" relative="1" width="50" as="geometry">

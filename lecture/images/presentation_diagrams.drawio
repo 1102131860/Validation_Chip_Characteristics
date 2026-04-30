@@ -168,7 +168,7 @@
           <mxGeometry height="50" width="218.75" x="483.38" y="606" as="geometry" />
         </mxCell>
         <mxCell id="Gd5hQ59z7SKtnslyQGk5-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Connect to power supply via&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;USA-USB wire&lt;/span&gt;" vertex="1">
-          <mxGeometry height="77" width="230" x="474" y="138.5" as="geometry" />
+          <mxGeometry height="77" width="230" x="477.75" y="138.5" as="geometry" />
         </mxCell>
         <mxCell id="GWfnd4wbCUi-GLXqdDID-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;span&gt;Power off Power supply&lt;/span&gt;" vertex="1">
           <mxGeometry height="61" width="218.75" x="483.38" y="395" as="geometry" />
@@ -296,6 +296,12 @@
         </mxCell>
         <mxCell id="S5CFqDuzVjltZ-plBdAL-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Yes&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="60" x="306" y="215.5" as="geometry" />
+        </mxCell>
+        <mxCell id="_2igcF5ww8sW-yzBsg2O-1" edge="1" parent="1" source="Gd5hQ59z7SKtnslyQGk5-12" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Gd5hQ59z7SKtnslyQGk5-9" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="790" y="280" as="sourcePoint" />
+            <mxPoint x="840" y="230" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

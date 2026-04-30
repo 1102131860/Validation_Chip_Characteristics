@@ -94,6 +94,26 @@
         <mxCell id="kMPJZPJU_ETUvULHIUaW-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=20;" value="&lt;span&gt;Power off power supply&lt;/span&gt;" vertex="1">
           <mxGeometry height="59" width="215" x="955" y="400" as="geometry" />
         </mxCell>
+        <mxCell id="kMPJZPJU_ETUvULHIUaW-6" edge="1" parent="1" source="u4sK_hv8aNIEFo1K-5Pd-20" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="u4sK_hv8aNIEFo1K-5Pd-1" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="780" y="694" />
+              <mxPoint x="780" y="259" />
+            </Array>
+            <mxPoint x="830" y="659" as="sourcePoint" />
+            <mxPoint x="880" y="609" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kMPJZPJU_ETUvULHIUaW-7" edge="1" parent="1" source="u4sK_hv8aNIEFo1K-5Pd-8" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;" target="kMPJZPJU_ETUvULHIUaW-3" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="1200" y="755" />
+              <mxPoint x="1200" y="430" />
+            </Array>
+            <mxPoint x="920" y="820" as="sourcePoint" />
+            <mxPoint x="970" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

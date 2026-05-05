@@ -1366,5 +1366,36 @@ Efficient driver staging and design is crucial
 
 - **Design for power (slew/reliability/noise) not for min-delay** 
 
+# Adaptive Clocking
+
+## The Supply Noise Problem
+
+![Power Delivery in Dig. SoCs (Simplified)](./images/image_83.png)
+
+![Supply Noise Sources in Regulated Domains](./images/image_84.png)
+
+![Supply Noise Requires Voltage/Frequency Margins](./images/image_85.png)
+
+## Early Mitigation Efforts
+
+![Early Mitigation Techniques: Emergency Q-Injection](./images/image_86.png)
+
+![Early Mitigation Techniques: Instruction Throttling](./images/image_87.png)
+
+## Present Adpative clocking
+
+### 'Detect-and-stretch' techniques
+
+![Control Vdd](./images/image_88.png)
+
+![Adaptive Clocking](./images/image_89.png)
+
+![Apadtive Clocking: Taxonomy](./images/image_90.png)
+
+![Detect and Strech Implementation (AMD)](./images/image_91.png)
+
+![Measured Detect and Strech Operations](./images/image_92.png)
+
+## Quick detour: Clock data compensation
 
 
